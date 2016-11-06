@@ -8,18 +8,19 @@ COMPILER_FLAGS = \
 	-D_THREAD_SAFE \
 	-Wall \
 	-g \
-	-std=c++11
+	-std=c++11 \
+	-static
+
+# Define the archiver to use.
+ARCHIVER = ar
+
+# Define archiver flags.
+ARCHIVER_FLAGS = rcs
 
 # Define directories containing headers to include.
 INCLUDE_PATHS = \
 	-I./include \
 	-I./template
-
-# Define directories containing libraries to include.
-LIBRARY_PATHS = \
-
-# Define libraries to link into the executable.
-LINKER_FLAGS = \
 
 # Define source files.
 SOURCE_FILES = \
@@ -29,17 +30,17 @@ SOURCE_FILES = \
 OBJECT_FILES = \
 	$(patsubst src/%.cpp, obj/%.o, $(SOURCE_FILES))
 
-# Define executable file.
-EXECUTABLE = bin/delegate
+# Define library file.
+STATIC_LIBRARY = lib/libDelegate.a
 
-all: $(EXECUTABLE)
+all: $(STATIC_LIBRARY)
 
-$(EXECUTABLE): $(OBJECT_FILES)
-	$(COMPILER) $(COMPILER_FLAGS) $^ -o $@ $(LIBRARY_PATHS) $(LINKER_FLAGS)
+$(STATIC_LIBRARY): $(OBJECT_FILES)
+	$(ARCHIVER) $(ARCHIVER_FLAGS) $(STATIC_LIBRARY) $(OBJECT_FILES)
 
 $(OBJECT_FILES): obj/%.o : src/%.cpp
 	$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@ $(INCLUDE_PATHS)
 
 clean:
-	$(RM) $(EXECUTABLE)
+	$(RM) $(wildcard lib/*.a)
 	$(RM) $(wildcard obj/*.o)
