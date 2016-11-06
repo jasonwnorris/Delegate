@@ -17,7 +17,7 @@ void DisplayDoubledInteger(int p_Integer)
 
 int main(int p_ArgCount, char** p_ArgVars)
 {
-  Delegate<void, int> delegate;
+  HD::Delegate<void, int> delegate;
   delegate.Add(DisplayInteger);
   delegate.Add(DisplayDoubledInteger);
   delegate(5);
