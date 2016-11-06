@@ -37,6 +37,6 @@ namespace HD
 }
 
 // Template Definition Include
-#include "Delegate.tpp"
+#include <HD/Delegate.tpp>
 
 #endif

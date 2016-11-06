@@ -1,9 +1,9 @@
 // main.cpp
 
+// HD Includes
+#include <HD/Delegate.hpp>
 // STL Includes
 #include <iostream>
-// Project Includes
-#include "Delegate.hpp"
 
 void DisplayInteger(int p_Integer)
 {

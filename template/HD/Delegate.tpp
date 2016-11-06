@@ -1,7 +1,7 @@
 // Delegate.tpp
 
 // HD Includes
-#include "Delegate.hpp"
+#include <HD/Delegate.hpp>
 
 #ifdef __HD_DELEGATE_HPP__
 
